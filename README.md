@@ -61,6 +61,8 @@ UNDERSTANDING WAITGROUPS
 	- Wait( ) - Instructs the wait group to wait for the children to finish
 	- Done( ) - Called by each thread when finished.
 
+``` go
+
 var (
   matches []string
   waitgroup = sync.WaitGroup{}
@@ -69,14 +71,13 @@ var (
 
 func main() {
   waitgroup.Add(1)
-  go filesearch("/Users/godfreybafana/projects/", "README.md")
+  go filesearch("/projects/", "README.md")
   waitgroup.Wait()
   for _, file := range matches {
     fmt.Println("Matched file", file)
   }
 }
-
-
+```
 
 CHANNELING AND PIPELINES
 - These are chained executions based on channels
@@ -97,6 +98,7 @@ CONDITION VARIABLES
 - BROADCAST - Wakes up all the threads that were waiting
 
 CONDITIONED THREAD
+``` go
 lock.Lock()
 for money-20 < 0 {
   moneyDeposited.Wait()
@@ -106,7 +108,7 @@ SIGNALLING THREAD
 lock.Lock()
 money += 10
 moneyDeposited.Signal()
-
+```
 
 
 DEADLOCKS
